@@ -1,4 +1,4 @@
-# Modified version of https://www.learnopencv.com/object-tracking-using-opencv-cpp-python/
+# https://www.learnopencv.com/object-tracking-using-opencv-cpp-python/
 # Install cv2 in python3 via pip install opencv-contrib-python
 # the "contrib" part expands the install to include all the object tracking packages
 
@@ -12,29 +12,29 @@ if __name__ == '__main__':
     # Set up tracker. Choose type from list.
 
     tracker_types = ['BOOSTING', 'MIL','KCF', 'TLD', 'MEDIANFLOW', 'GOTURN']
+
+    # Works for mosquito trap and occasional issues with charlie chaplin
     tracker_type = tracker_types[0]
 
-    if int(minor_ver) < 3:
-        tracker = cv2.Tracker_create(tracker_type)
-    else:
-        if tracker_type == 'BOOSTING':
-            tracker = cv2.TrackerBoosting_create()
-        if tracker_type == 'MIL':
-            tracker = cv2.TrackerMIL_create()
-        if tracker_type == 'KCF':
-            tracker = cv2.TrackerKCF_create()
-        if tracker_type == 'TLD':
-            tracker = cv2.TrackerTLD_create()
-        if tracker_type == 'MEDIANFLOW':
-            tracker = cv2.TrackerMedianFlow_create()
-        if tracker_type == 'GOTURN':
-            tracker = cv2.TrackerGOTURN_create()
+    # if int(minor_ver) < 3:
+    #     tracker = cv2.Tracker_create(tracker_type)
+    # else:
+    if tracker_type == 'BOOSTING':
+        tracker = cv2.TrackerBoosting_create()
+    if tracker_type == 'MIL':
+        tracker = cv2.TrackerMIL_create()
+    if tracker_type == 'KCF':
+        tracker = cv2.TrackerKCF_create()
+    if tracker_type == 'TLD':
+        tracker = cv2.TrackerTLD_create()
+    if tracker_type == 'MEDIANFLOW':
+        tracker = cv2.TrackerMedianFlow_create()
+    if tracker_type == 'GOTURN':
+        tracker = cv2.TrackerGOTURN_create()
 
     # Read video
-    # video = cv2.VideoCapture("/Users/epreble/Documents/Data/Youtube/PalmDrone.mp4")
-    # video = cv2.VideoCapture("/Users/epreble/Documents/Data/Raw/Drone_SIF_2017/RTI_Campus_Mosquito_Training/DJI_0006_100ft_white.m4v")
-    video = cv2.VideoCapture("/Users/epreble/Desktop/chaplin.mov")
-    # video = cv2.VideoCapture("/Users/epreble/Desktop/grass_with_trap_small.mp4")
+    video = cv2.VideoCapture("/Users/epreble/Desktop/grass_with_trap_small.mp4")
+    # video = cv2.VideoCapture("/Users/epreble/Desktop/chaplin.mov")
 
     # Exit if video not opened.
     if not video.isOpened():
